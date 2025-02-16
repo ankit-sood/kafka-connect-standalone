@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- Suppress noisy logs from dependencies-->
+        <logger name="org.reflections" level="ERROR">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <logger name="org.eclipse.jetty" level="ERROR">
+            <AppenderRef ref="Console"/>
+        </logger>
+    <!--    Uncomment the following line when enabling debug on source connectors-->
+<!--        <logger name="org.apache.kafka.connect.runtime.WorkerSourceTask" level="DEBUG">-->
+<!--            <AppenderRef ref="Console"/>-->
+<!--        </logger>-->
+
+    <!--    Uncomment the following line when enabling debug on sink connectors-->
+<!--        <logger name="org.apache.kafka.connect.runtime.WorkerSinkTask" level="DEBUG">-->
+<!--            <AppenderRef ref="Console"/>-->
+<!--        </logger>-->
+    <!--    Uncomment the following line when the problem may be with Connect, SMTs, converters -->
+<!--        <logger name="org.apache.kafka.connect" level="INFO">-->
+<!--            <AppenderRef ref="Console"/>-->
+<!--        </logger>-->
+
+        <logger name="org.apache.kafka.connect.runtime.WorkerSourceTask" level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <logger name="org.apache.kafka" level="INFO">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <logger name="io.confluent.connect.jdbc.source.TimestampIncrementingCriteria" level="Trace">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
